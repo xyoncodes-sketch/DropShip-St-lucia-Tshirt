@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | DropShip St lucia Tshirt</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="logo.jpg" alt="Logo">
+                <span>DropShip St lucia Tshirt</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#products">Catalog</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+            <div class="cart-icon" onclick="toggleCart()">
+                🛒 <span id="cart-count">0</span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Contact Form Section -->
+    <section class="container">
+        <h2>Contact Us</h2>
+        <div class="contact-form-container">
+            <form action="https://formspree.io/f/xnjbqeez" method="POST">
+                
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                     <input type="email" id="email" name="email" placeholder="email" required>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" placeholder="How can we help you?" required></textarea>
+                </div>
+
+                <!-- Spam Prevention: Honeypot field (hidden) -->
+                <input type="text" name="_gotcha" style="display:none">
+
+                <button type="submit" class="cta-button" style="border:none; cursor:pointer; width:100%;">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer (Simplified for this page) -->
+    <footer class="footer">
+        <div class="footer-bottom">&copy; 2023 DropShip St Lucia Tshirt. All rights reserved.</div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
