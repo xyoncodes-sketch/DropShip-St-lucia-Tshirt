@@ -190,7 +190,6 @@ function addToCart(productId) {
         cart.push(product);
         localStorage.setItem('shoppingCart', JSON.stringify(cart));
         updateCartCount();
-        alert(`${product.name} added to cart!`);
     }
 }
 
