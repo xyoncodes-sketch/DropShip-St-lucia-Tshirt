@@ -32,55 +32,42 @@ const products = [
     },
     {
         id: 6,
-        name: "Product 6",
         name: "Dont Get Jealous",
         price: 25.00,
         image: "7 (6).jpg"
     },
     {
         id: 7,
-        name: "Product 7",
-        price: 30.00,
         name: "Proud Lucian",
         price: 25.00,
         image: "7 (7).jpg"
     },
     {
         id: 8,
-        name: "Product 8",
-        price: 35.00,
         name: "1979",
         price: 25.00,
         image: "7 (8).jpg"
     },
     {
         id: 9,
-        name: "Product 9",
-        price: 40.00,
         name: "Cute confident Saint Lucien",
         price: 25.00,
         image: "7 (9).jpg"
     },
     {
         id: 10,
-        name: "Product 10",
-        price: 45.00,
         name: "Born and Raised",
         price: 25.00,
         image: "7 (10).jpg"
     },
     {
         id: 11,
-        name: "Product 11",
-        price: 50.00,
         name: "Lucian by Nature",
         price: 25.00,
         image: "1 (1).jpg"
     },
     {
         id: 12,
-        name: "Product 12",
-        price: 55.00,
         name: "Lucian Unite",
         price: 25.00,
         image: "1 (2).jpg"
@@ -88,14 +75,11 @@ const products = [
     {
         id: 13,
         name: "Product 13",
-        price: 60.00,
         price: 25.00,
         image: "1 (3).jpg"
     },
     {
         id: 14,
-        name: "Product 14",
-        price: 65.00,
         name: "Lucian Soldier",
         price: 25.00,
         image: "1 (4).jpg"
@@ -103,21 +87,17 @@ const products = [
     {
         id: 15,
         name: "Product 15",
-        price: 70.00,
         price: 25.00,
         image: "1 (5).jpg"
     },
     {
         id: 16,
         name: "Product 16",
-        price: 75.00,
         price: 25.00,
         image: "1 (6).jpg"
     },
     {
         id: 17,
-        name: "Product 17",
-        price: 80.00,
         name: "Proud Lucian",
         price: 25.00,
         image: "1 (7).jpg"
@@ -125,29 +105,23 @@ const products = [
     {
         id: 18,
         name: "Product 18",
-        price: 85.00,
         price: 25.00,
         image: "1 (8).jpg"
     },
     {
         id: 19,
         name: "Product 19",
-        price: 90.00,
         price: 25.00,
         image: "1 (9).jpg"
     },
     {
         id: 20,
-        name: "Product 20",
-        price: 95.00,
         name: "758",
         price: 25.00,
         image: "1 (10).jpg"
     },
     {
         id: 21,
-        name: "Product 21",
-        price: 100.00,
         name: "Lucian To The Bone",
         price: 25.00,
         image: "1 (11).jpg"
@@ -215,10 +189,12 @@ function updateCartCount() {
 }
 
 // Add item to cart
-function addToCart(productId) {
+function addToCart(productId, size) {
     const product = products.find(p => p.id === productId);
     if (product) {
-        cart.push(product);
+        // Clone the product and add the selected size (default to 'M' if not specified)
+        const cartItem = { ...product, size: size || 'M' };
+        cart.push(cartItem);
         localStorage.setItem('shoppingCart', JSON.stringify(cart));
         updateCartCount();
     }
@@ -244,6 +220,7 @@ function renderCheckoutCart() {
             <img src="${item.image}" alt="${item.name}" class="checkout-img">
             <div class="item-info">
                 <strong>${item.name}</strong>
+                <span>Size: ${item.size || 'M'}</span>
                 <span>$${item.price.toFixed(2)}</span>
             </div>
             <button onclick="removeFromCart(${index})" class="remove-btn">Remove</button>
@@ -255,7 +232,7 @@ function renderCheckoutCart() {
     
     // Fill hidden input for email
     if (hiddenInput) {
-        const itemsList = cart.map(i => `${i.name} ($${i.price})`).join(', ');
+        const itemsList = cart.map(i => `${i.name} (${i.size || 'M'}) - $${i.price}`).join(', ');
         hiddenInput.value = `TOTAL: $${total.toFixed(2)} \nITEMS: ${itemsList}`;
     }
 }
@@ -279,7 +256,8 @@ function loadProductDetails() {
         
         const addBtn = document.getElementById('add-to-cart-btn');
         addBtn.onclick = function() {
-            addToCart(product.id);
+            const size = document.getElementById('size-select').value;
+            addToCart(product.id, size);
         };
     } else {
         document.querySelector('.product-details-wrapper').innerHTML = '<h2>Product not found</h2><a href="index.html" class="cta-button">Back to Home</a>';
