@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | DropShip St lucia Tshirt</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="logo.jpg" alt="Logo">
+                <span>DropShip St lucia Tshirt</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#products">Catalog</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="cart-icon" onclick="toggleCart()">
+                🛒 <span id="cart-count">0</span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Product Details Section -->
+    <section class="container" id="product-details-page">
+        <div class="product-details-wrapper">
+            <div class="product-image-section">
+                <img id="product-image" src="" alt="Product Image">
+            </div>
+            <div class="product-info-section">
+                <h2 id="product-name">Loading Product...</h2>
+                <span class="price" id="product-price"></span>
+                
+                <div class="description">
+                    <p>Experience the best of Saint Lucia with this premium quality design. Made from 100% soft cotton for all-day comfort.</p>
+                    <ul style="margin-top: 10px; margin-left: 20px; color: #555;">
+                        <li>Premium Quality Print</li>
+                        <li>100% Cotton</li>
+                        <li>Unisex Fit</li>
+                        <li>Machine Washable</li>
+                    </ul>
+                </div>
+
+                <div class="product-options">
+                    <label for="size-select">Size:</label>
+                    <select id="size-select">
+                        <option value="S">Small</option>
+                        <option value="M">Medium</option>
+                        <option value="L">Large</option>
+                        <option value="XL">XL</option>
+                        <option value="2XL">2XL</option>
+                        <option value="3XL">3XL</option>
+                    </select>
+                    <a href="size-chart.html" class="size-guide-link">View Size Chart</a>
+                </div>
+
+                <button id="add-to-cart-btn" class="cta-button add-btn-large">Add to Cart</button>
+                
+                <div style="margin-top: 20px;">
+                    <a href="index.html#products" style="color: #0087D1; text-decoration: none;">&larr; Back to Catalog</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-bottom">
+            &copy; 2026 DropShip St Lucia Tshirt. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
