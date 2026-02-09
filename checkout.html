@@ -22,6 +22,11 @@
             <div class="cart-icon">
                 🛒 <span id="cart-count">0</span>
             </div>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </nav>
     </header>
 
@@ -73,10 +78,16 @@
 
                     <button type="submit" class="cta-button" style="width:100%; border:none; cursor:pointer;">Place Order</button>
                 </form>
+
+                <div style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 20px;">
+                    <p style="text-align: center; margin-bottom: 10px;">Or pay with:</p>
+                    <div id="paypal-button-container"></div>
+                </div>
             </div>
         </div>
     </section>
 
+    <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
     <script src="script.js"></script>
 </body>
 </html>

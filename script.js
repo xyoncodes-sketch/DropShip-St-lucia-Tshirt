@@ -173,6 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // If we are on the checkout page, render the items
     if (document.getElementById('checkout-cart-items')) {
         renderCheckoutCart();
+        renderPayPalButton();
     }
 
     // If we are on the product details page, load the product
@@ -202,6 +203,13 @@ function addToCart(productId, size) {
 
 function toggleCart() {
     window.location.href = 'checkout.html';
+}
+
+function toggleMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    const menuToggle = document.querySelector('.menu-toggle');
+    navLinks.classList.toggle('active');
+    menuToggle.classList.toggle('active');
 }
 
 function renderCheckoutCart() {
@@ -261,5 +269,33 @@ function loadProductDetails() {
         };
     } else {
         document.querySelector('.product-details-wrapper').innerHTML = '<h2>Product not found</h2><a href="index.html" class="cta-button">Back to Home</a>';
+    }
+}
+
+function renderPayPalButton() {
+    if (typeof paypal !== 'undefined' && document.getElementById('paypal-button-container')) {
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                const total = cart.reduce((sum, item) => sum + item.price, 0);
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: total.toFixed(2)
+                        }
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    alert('Transaction completed by ' + details.payer.name.given_name);
+                    // Clear cart
+                    cart = [];
+                    localStorage.setItem('shoppingCart', JSON.stringify(cart));
+                    updateCartCount();
+                    // Redirect
+                    window.location.href = 'index.html';
+                });
+            }
+        }).render('#paypal-button-container');
     }
 }
