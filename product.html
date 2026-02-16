@@ -76,17 +76,26 @@
                 <div class="product-options">
                     <label for="size-select">Size:</label>
                     <select id="size-select">
+                        <option value="children S">Children</option>
+                          <option value="children m">Children</option>
+                              <option value="children l">Children</option>
+                      <option value="children XL">Children</option>
+                 
                         <option value="S">Small</option>
                         <option value="M">Medium</option>
                         <option value="L">Large</option>
                         <option value="XL">XL</option>
-                        <option value="2XL">2XL</option>
-                        <option value="3XL">3XL</option>
+                       
+                      
                     </select>
                     <a href="size-chart.html" class="size-guide-link">View Size Chart</a>
                 </div>
 
                 <button id="add-to-cart-btn" class="cta-button add-btn-large">Add to Cart</button>
+                
+                <div style="text-align: center; margin: 15px 0; color: #888; font-weight: bold;">OR</div>
+
+                <div id="paypal-buy-now-button-container"></div>
                 
                 <div style="margin-top: 20px;">
                     <a href="index.html#products" style="color: #0087D1; text-decoration: none;">&larr; Back to Catalog</a>
@@ -102,6 +111,7 @@
         </div>
     </footer>
 
+    <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
     <script src="script.js"></script>
 </body>
 </html>

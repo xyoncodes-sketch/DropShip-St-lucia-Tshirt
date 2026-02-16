@@ -245,9 +245,10 @@ button.add-btn:hover {
 /* Checkout Styles */
 .checkout-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.5fr 1fr;
     gap: 2rem;
-    margin-top: 1rem;
+    margin-top: 2rem;
+    align-items: start;
 }
 
 @media (max-width: 768px) {
@@ -256,43 +257,72 @@ button.add-btn:hover {
     }
 }
 
-.checkout-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
+.cart-section,
+.order-summary {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.cart-section h3,
+.order-summary h3 {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
     border-bottom: 1px solid #eee;
 }
 
+.checkout-item {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #f4f4f9;
+}
+
+.checkout-item:last-child {
+    border-bottom: none;
+}
+
 .checkout-img {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     object-fit: cover;
-    border-radius: 4px;
-    margin-right: 15px;
+    border-radius: 8px;
+    margin-right: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .item-info {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 5px;
 }
 
 .cart-total {
-    margin-top: 1rem;
-    font-size: 1.2rem;
+    margin-top: 2rem;
+    font-size: 1.5rem;
     text-align: right;
-    border-top: 2px solid #333;
-    padding-top: 10px;
+    border-top: 2px solid #f4f4f9;
+    padding-top: 1.5rem;
+    color: #0087D1;
 }
 
 .remove-btn {
-    background: none;
-    border: none;
-    color: red;
+    background-color: #fff5f5;
+    border: 1px solid #ffcccc;
+    color: #e53e3e;
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.remove-btn:hover {
+    background-color: #e53e3e;
+    color: white;
+    border-color: #e53e3e;
 }
 
 /* Product Details Page */
@@ -410,4 +440,98 @@ button.add-btn:hover {
     .menu-toggle.active span:nth-child(3) {
         transform: rotate(-45deg) translate(5px, -6px);
     }
+}
+
+/* Moving Gallery Marquee */
+.marquee-container {
+    width: 100%;
+    overflow: hidden;
+    background-color: #f4f4f9;
+    padding: 20px 0;
+    margin-bottom: 6rem;
+    position: relative;
+}
+
+.marquee-container::before,
+.marquee-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.marquee-container::before {
+    left: 0;
+    background: linear-gradient(to right, #f4f4f9, transparent);
+}
+
+.marquee-container::after {
+    right: 0;
+    background: linear-gradient(to left, #f4f4f9, transparent);
+}
+
+.marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 30s linear infinite;
+}
+
+.marquee-track:hover {
+    animation-play-state: paused;
+}
+
+.marquee-track img {
+    height: 250px;
+    width: auto;
+    margin-right: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.marquee-track img:hover {
+    transform: scale(1.05);
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.marquee-track.reverse {
+    animation-direction: reverse;
+}
+
+/* Receipt Styles */
+.receipt-container {
+    background: white;
+    padding: 3rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+.receipt-header {
+    text-align: center;
+    border-bottom: 2px solid #f4f4f9;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+}
+
+.receipt-success-icon {
+    color: #4CAF50;
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.receipt-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee;
 }
