@@ -139,14 +139,9 @@ const products = [
         id: 21,
         name: "Lucian To The Bone",
         price: 25.00,
+
         image: "1 (11).jpg",
         stripeLink: "https://www.paypal.com/instantcommerce/checkout/68MG88XJ4BDPG"
-    },
-    {
-        id: 22,
-        name: "Product 22",
-        price: 105.00,
-        image: "https://placehold.co/400x300?text=Product+22"
     },
     {
         id: 23,
@@ -180,201 +175,232 @@ const products = [
     },
     {
         id: 28,
-        name: "5",
-        price: 25.00,
-        image: "5.jpg"
-    },
-    {
-        id: 29,
-        name: "5 (1)",
+        name: "Lavi bèle",
         price: 25.00,
         image: "5 (1).jpg"
     },
     {
-        id: 30,
-        name: "5 (2)",
+        id: 29,
+        name: "kwéol sent lisi",
         price: 25.00,
-        image: "5 (2).jpg"
+        image: "5 (2).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/TNC6Q7EWVV4RC"
+       
+     },
+    {   
+        id: 30,
+        name: "kwéol sent lisi",
+        price: 25.00,
+        image: "5 (3).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/TNC6Q7EWVV4RC"
     },
     {
         id: 31,
-        name: "5 (3)",
+        name: "kwéol sent lisi",
         price: 25.00,
-        image: "5 (3).jpg"
+        image: "5 (3).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/TNC6Q7EWVV4RC"
     },
     {
         id: 32,
-        name: "5 (4)",
+        name: "kwéol sent lisi",
         price: 25.00,
-        image: "5 (4).jpg"
+        image: "5 (4).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/TNC6Q7EWVV4RC"
     },
     {
         id: 33,
-        name: "5 (5)",
+        name: "Bél Fenm",
         price: 25.00,
-        image: "5 (5).jpg"
+        image: "5 (5).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/U8L576RQCKP8C"
     },
     {
         id: 34,
-        name: "5 (6)",
+        name: "M)",
         price: 25.00,
         image: "5 (6).jpg"
     },
     {
         id: 35,
-        name: "5 (7)",
+        name: "Mood la sé wouj",
         price: 25.00,
-        image: "5 (7).jpg"
+        image: "5 (7).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/NSNHUGEN7RB5N"
     },
     {
         id: 36,
-        name: "5 (8)",
+        name: "Ti manmay)",
         price: 25.00,
-        image: "5 (8).jpg"
+        image: "5 (8).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/G6UV99N3KXGWY"
     },
     {
         id: 37,
-        name: "5 (9)",
+        name: "Bél Fenm",
         price: 25.00,
-        image: "5 (9).jpg"
+        image: "5 (9).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/U8L576RQCKP8C"
     },
     {
         id: 38,
-        name: "5 (10)",
+        name: "Tibwa kwéyol",
         price: 25.00,
-        image: "5 (10).jpg"
+        image: "5 (10).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/DVCB3SDDYDY6N"
     },
     {
         id: 39,
-        name: "5 (11)",
+        name: "Dwivé",
         price: 25.00,
-        image: "5 (11).jpg"
+        image: "5 (11).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/Y9JFDMMFDQW4J"
     },
     {
         id: 40,
-        name: "5 (12)",
+        name: "Tan Jon",
         price: 25.00,
-        image: "5 (12).jpg"
+        image: "5 (12).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/3JJPJHUH2985Q"
     },
     {
         id: 41,
-        name: "5 (13)",
+        name: "TiFi kwéyol",
         price: 25.00,
-        image: "5 (13).jpg"
+        image: "5 (13).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/EQ56SGXA6B3UJ"
     },
     {
         id: 42,
-        name: "5 (14)",
+        name: "wouj èk Pawé",
         price: 25.00,
-        image: "5 (14).jpg"
+        image: "5 (14).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/TJGXM29RB7KR8"
     },
     {
         id: 43,
-        name: "5 (15)",
+        name: "Sent Lisi",
         price: 25.00,
-        image: "5 (15).jpg"
+        image: "5 (15).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/A5PY75SX3MZX6"
     },
     {
         id: 44,
-        name: "5 (16)",
+        name: "Mèsi bondyé",
         price: 25.00,
-        image: "5 (16).jpg"
+        image: "5 (16).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/MMBANQ49ZYGZG"
     },
     {
         id: 45,
-        name: "5 (17)",
+        name: "Pa ni pwoblenm",
         price: 25.00,
-        image: "5 (17).jpg"
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/PV8FUHBBMY53S"
     },
     {
         id: 46,
-        name: "5 (18)",
+        name: "Sank salop",
         price: 25.00,
-        image: "5 (18).jpg"
+        image: "5 (18).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/SU63K49H9AF6Q"
     },
     {
         id: 47,
-        name: "5 (19)",
+        name: "Pasé an bon jouné",
         price: 25.00,
-        image: "5 (19).jpg"
+        image: "5 (19).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/MXR4YTGNCJP3N"
     },
     {
         id: 48,
-        name: "5 (20)",
+        name: "Mwen pa ni tan pou bétiz",
         price: 25.00,
-        image: "5 (20).jpg"
+        image: "5 (20).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/ED4ATLS8QAX5S"
     },
     {
         id: 49,
-        name: "5 (21)",
+        name: "Diva kwéyol",
         price: 25.00,
-        image: "5 (21).jpg"
+        image: "5 (21).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/NMNYC9JJD3RKE"
     },
     {
         id: 50,
-        name: "5 (22)",
+        name: "Sa ka fèt ?",
         price: 25.00,
-        image: "5 (22).jpg"
+        image: "5 (22).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/NBN8YCH5LLUCQ"
     },
     {
         id: 51,
-        name: "5 (23)",
+        name: "Gwan tan ansanm",
         price: 25.00,
-        image: "5 (23).jpg"
+        image: "5 (23).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/VF2V78YM89RDA"
     },
     {
         id: 52,
-        name: "5 (24)",
+        name: "Fenm",
         price: 25.00,
-        image: "5 (24).jpg"
+        image: "5 (24).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/QPXZRFXWVES7E"
     },
     {
         id: 53,
-        name: "5 (25)",
+        name: "lavi dou",
         price: 25.00,
-        image: "5 (25).jpg"
+        image: "5 (25).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/QVYUF3P8Y48GE"
     },
     {
         id: 54,
-        name: "5 (26)",
+        name: "Bèlich",
         price: 25.00,
-        image: "5 (26).jpg"
+        image: "5 (26).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/B45W2YFNPS77A"
     },
     {
         id: 55,
-        name: "5 (27)",
+        name: "Jon sé kod la",
         price: 25.00,
-        image: "5 (27).jpg"
+        image: "5 (27).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/YD5PFYGS3XR62"
     },
     {
         id: 56,
-        name: "5 (28)",
+        name: "Mwen la ka tjébé",
         price: 25.00,
-        image: "5 (28).jpg"
+        image: "5 (28).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/R8TMU5T368MVQ"
     },
     {
         id: 57,
-        name: "5 (29)",
+        name: "Mwen la",
         price: 25.00,
-        image: "5 (29).jpg"
+        image: "5 (29).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/V8ZCLGEDMC82E"
     },
     {
         id: 58,
-        name: "5 (30)",
+        name: "toujou kwé",
         price: 25.00,
-        image: "5 (30).jpg"
+        image: "5 (30).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/YCJRVDHXQTCP8"
     },
     {
         id: 59,
-        name: "5 (31)",
+        name: "Tjébé wèd",
         price: 25.00,
-        image: "5 (31).jpg"
+        image: "5 (31).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/JUFVUKCNMYLJQ"
     },
     {
         id: 60,
-        name: "5 (32)",
+        name: "Alo",
         price: 25.00,
-        image: "5 (32).jpg"
+        image: "5 (32).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/AW6UCNDMLEWAY"
     }
 ];
 
