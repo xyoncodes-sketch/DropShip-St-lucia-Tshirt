@@ -5,21 +5,21 @@ const products = [
         name: "Lucian Queen",
         price: 25.00,
         image: "7 (1).jpg",
-        stripeLink: "https://buy.stripe.com/test_28EbJ38gf5WvfyVd59c7u00"
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/NWP8HS8B7H4W2"
     },
     {
         id: 2,
         name: "Homegrown Lucian",
         price: 25.00,
         image: "7 (2).jpg",
-        stripeLink: "https://buy.stripe.com/test_9B628tfIHbgP2M9fdhc7u01"
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/APGWHMPUTAYVS"
     },
     {
         id: 3,
         name: "Maide in Saint lucia",
         price: 25.00,
         image: "7 (3).jpg",
-        stripeLink: "https://buy.stripe.com/test_4gMeVfcwvbgP9ax8OTc7u02"
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/BXZZE76PNQ2NC"
     },
     {
         id: 4,
@@ -230,7 +230,7 @@ const products = [
     },
     {
         id: 36,
-        name: "Ti manmay)",
+        name: "Ti manmay",
         price: 25.00,
         image: "5 (8).jpg",
         stripeLink: "https://www.paypal.com/instantcommerce/checkout/G6UV99N3KXGWY"
