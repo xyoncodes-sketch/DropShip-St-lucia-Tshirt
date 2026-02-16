@@ -21,8 +21,6 @@
     </script>
     <title>Checkout | DropShip St lucia Tshirt</title>
     <link rel="stylesheet" href="style.css">
-    <!-- PayPal SDK -->
-    <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
     <!-- EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
@@ -102,13 +100,16 @@
                     </button>
                 </form>
 
+                <button id="whatsapp-checkout-btn" class="cta-button" style="width: 100%; border: none; cursor: pointer; margin-top: 1rem; background-color: #25D366; color: white;">
+                    Order via WhatsApp
+                </button>
+
+                <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                    PayPal is for single item payments. WhatsApp is for multiple item payments.
+                </p>
+
                 <!-- Dynamic Payment Link Container -->
                 <div id="payment-link-container"></div>
-
-                <div style="margin-top: 2rem; border-top: 1px solid #eee; padding-top: 1rem;">
-                    <p style="text-align: center; margin-bottom: 1rem; color: #666;">Or pay securely with PayPal</p>
-                    <div id="paypal-button-container"></div>
-                </div>
             </div>
         </div>
     </section>

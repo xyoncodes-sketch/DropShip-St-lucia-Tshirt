@@ -25,55 +25,64 @@ const products = [
         id: 4,
         name: "Super Lucian",
         price: 25.00,
-        image: "7 (4).jpg"
+        image: "7 (4).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/U9F3D3N6HG4BE"
     },
     {
         id: 5,
         name: "758758",
         price: 25.00,
-        image: "7 (5).jpg"
+        image: "7 (5).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/2SULKJ3VNEPY2"
     },
     {
         id: 6,
         name: "Dont Get Jealous",
         price: 25.00,
-        image: "7 (6).jpg"
+        image: "7 (6).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/DEQ6SNGH85DLC"
     },
     {
         id: 7,
         name: "Proud Lucian",
         price: 25.00,
-        image: "7 (7).jpg"
+        image: "7 (7).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/C65VLDEJSKE4Y"
     },
     {
         id: 8,
         name: "1979",
         price: 25.00,
-        image: "7 (8).jpg"
+        image: "7 (8).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/Y2H4V3DYJY9UY"
     },
     {
         id: 9,
         name: "Cute confident Saint Lucien",
         price: 25.00,
-        image: "7 (9).jpg"
+        image: "7 (9).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/7KGF34ZK22BDA"
     },
     {
         id: 10,
         name: "Born and Raised",
         price: 25.00,
-        image: "7 (10).jpg"
+        image: "7 (10).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/YVKFCVVEP79DW"
     },
     {
         id: 11,
         name: "Lucian by Nature",
         price: 25.00,
-        image: "1 (1).jpg"
+        image: "1 (1).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/SANK8T2S2JRC6"
     },
     {
         id: 12,
         name: "Lucian Unite",
         price: 25.00,
-        image: "1 (2).jpg"
+        image: "1 (2).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/53S4ZMMAP9LL4"
     },
     {
         id: 13,
@@ -85,7 +94,8 @@ const products = [
         id: 14,
         name: "Lucian Soldier",
         price: 25.00,
-        image: "1 (4).jpg"
+        image: "1 (4).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/T766YBZDKX4YW"
     },
     {
         id: 15,
@@ -103,7 +113,8 @@ const products = [
         id: 17,
         name: "Proud Lucian",
         price: 25.00,
-        image: "1 (7).jpg"
+        image: "1 (7).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/C65VLDEJSKE4Y"
     },
     {
         id: 18,
@@ -121,13 +132,15 @@ const products = [
         id: 20,
         name: "758",
         price: 25.00,
-        image: "1 (10).jpg"
+        image: "1 (10).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/MHSBB697FGCF4"
     },
     {
         id: 21,
         name: "Lucian To The Bone",
         price: 25.00,
-        image: "1 (11).jpg"
+        image: "1 (11).jpg",
+        stripeLink: "https://www.paypal.com/instantcommerce/checkout/68MG88XJ4BDPG"
     },
     {
         id: 22,
@@ -365,6 +378,13 @@ const products = [
     }
 ];
 
+// Add PayPal link to all products that don't have a link
+products.forEach(p => {
+    if (!p.stripeLink) {
+        p.stripeLink = "https://www.paypal.com/instantcommerce/checkout/U9F3D3N6HG4BE";
+    }
+});
+
 let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
 
 // Initialize
@@ -374,7 +394,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // If we are on the checkout page, render the items
     if (document.getElementById('checkout-cart-items')) {
         renderCheckoutCart();
-        renderPayPalButton();
     }
 
     // If we are on the product details page, load the product
@@ -392,6 +411,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (checkoutForm) {
         checkoutForm.addEventListener('submit', handleCheckoutForm);
     }
+
+    // Handle WhatsApp Checkout
+    const whatsappBtn = document.getElementById('whatsapp-checkout-btn');
+    if (whatsappBtn) {
+        whatsappBtn.addEventListener('click', handleWhatsAppCheckout);
+    }
 });
 
 function updateCartCount() {
@@ -402,11 +427,11 @@ function updateCartCount() {
 }
 
 // Add item to cart
-function addToCart(productId, size) {
+function addToCart(productId, size, color) {
     const product = products.find(p => p.id === productId);
     if (product) {
-        // Clone the product and add the selected size (default to 'M' if not specified)
-        const cartItem = { ...product, size: size || 'M' };
+        // Clone the product and add the selected size and color
+        const cartItem = { ...product, size: size || 'M', color: color || 'White' };
         cart.push(cartItem);
         localStorage.setItem('shoppingCart', JSON.stringify(cart));
         updateCartCount();
@@ -444,7 +469,7 @@ function renderCheckoutCart() {
             <img src="${item.image}" alt="${item.name}" class="checkout-img">
             <div class="item-info">
                 <strong>${item.name}</strong>
-                <span>Size: ${item.size || 'M'}</span>
+                <span>Size: ${item.size || 'M'} | Color: ${item.color || 'White'}</span>
                 <span>$${item.price.toFixed(2)}</span>
             </div>
             <button onclick="removeFromCart(${index})" class="remove-btn">Remove</button>
@@ -456,7 +481,7 @@ function renderCheckoutCart() {
     
     // Fill hidden input for email
     if (hiddenInput) {
-        const itemsList = cart.map(i => `${i.name} (${i.size || 'M'}) - $${i.price}`).join(', ');
+        const itemsList = cart.map(i => `${i.name} (${i.size || 'M'}, ${i.color || 'White'}) - $${i.price}`).join(', ');
         hiddenInput.value = `TOTAL: $${total.toFixed(2)} \nITEMS: ${itemsList}`;
     }
 
@@ -472,7 +497,29 @@ function renderCheckoutCart() {
             btn.className = 'cta-button';
             btn.innerText = 'Pay with Card (Direct Link)';
             btn.style.cssText = 'display: block; text-align: center; background-color: #635bff; color: white; width: 100%; text-decoration: none; margin-top: 1rem; border: none;';
+            
+            if (cart[0].stripeLink.includes('paypal.com')) {
+                btn.innerText = 'Pay with PayPal';
+                btn.style.cssText = 'display: block; text-align: center; background-color: #0070ba; color: white; width: 100%; text-decoration: none; margin-top: 1rem; border: none;';
+            } else {
+                btn.innerText = 'Pay with Card (Direct Link)';
+                btn.style.cssText = 'display: block; text-align: center; background-color: #635bff; color: white; width: 100%; text-decoration: none; margin-top: 1rem; border: none;';
+            }
+            
             linkContainer.appendChild(btn);
+
+            // Add WhatsApp Button
+            const waBtn = document.createElement('button');
+            waBtn.className = 'cta-button';
+            waBtn.innerText = 'Order on WhatsApp';
+            waBtn.style.cssText = 'display: block; width: 100%; margin-top: 1rem; background-color: #25D366; color: white; border: none; cursor: pointer;';
+            waBtn.onclick = () => {
+                const message = `Hi, I'm interested in buying: ${cart[0].name} (${cart[0].size || 'M'}, ${cart[0].color || 'White'}) - $${cart[0].price.toFixed(2)}`;
+                const phoneNumber = "13478493290";
+                const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+                window.open(url, '_blank');
+            };
+            linkContainer.appendChild(waBtn);
         }
     }
 }
@@ -494,10 +541,27 @@ function loadProductDetails() {
         document.getElementById('product-name').innerText = product.name;
         document.getElementById('product-price').innerText = '$' + product.price.toFixed(2);
         
+        // Inject Color Selector if it doesn't exist
+        const sizeSelect = document.getElementById('size-select');
+        if (sizeSelect && !document.getElementById('color-select')) {
+            const colorSelect = document.createElement('select');
+            colorSelect.id = 'color-select';
+            // Colors list - you can customize this
+            const colors = ['White', 'Black', 'Navy', 'Red', 'Gray', 'Yellow'];
+            colors.forEach(c => {
+                const option = document.createElement('option');
+                option.value = c;
+                option.innerText = c;
+                colorSelect.appendChild(option);
+            });
+            sizeSelect.parentNode.insertBefore(colorSelect, sizeSelect.nextSibling);
+        }
+
         const addBtn = document.getElementById('add-to-cart-btn');
         addBtn.onclick = function() {
-            const size = document.getElementById('size-select').value;
-            addToCart(product.id, size);
+            const size = document.getElementById('size-select') ? document.getElementById('size-select').value : 'M';
+            const color = document.getElementById('color-select') ? document.getElementById('color-select').value : 'White';
+            addToCart(product.id, size, color);
         };
 
         // Render Stripe Buy Now Button if link exists
@@ -512,62 +576,42 @@ function loadProductDetails() {
                 btn.className = 'cta-button';
                 btn.innerText = 'Buy Now';
                 btn.style.cssText = 'display: block; text-align: center; background-color: #635bff; color: white; width: 100%; text-decoration: none; margin-top: 0;';
+                
+                if (product.stripeLink.includes('paypal.com')) {
+                    btn.innerText = 'Pay with PayPal';
+                    btn.style.cssText = 'display: block; text-align: center; background-color: #0070ba; color: white; width: 100%; text-decoration: none; margin-top: 0;';
+                } else {
+                    btn.innerText = 'Buy Now';
+                    btn.style.cssText = 'display: block; text-align: center; background-color: #635bff; color: white; width: 100%; text-decoration: none; margin-top: 0;';
+                }
+                
                 buyNowContainer.appendChild(btn);
-                if (orDivider) orDivider.style.display = 'block';
-            } else if (orDivider) {
-                orDivider.style.display = 'none';
             }
+
+            // Add WhatsApp Button
+            const waBtn = document.createElement('button');
+            waBtn.className = 'cta-button';
+            waBtn.innerText = 'Order on WhatsApp';
+            waBtn.style.cssText = 'display: block; width: 100%; margin-top: 1rem; background-color: #25D366; color: white; border: none; cursor: pointer;';
+            waBtn.onclick = () => {
+                const size = document.getElementById('size-select') ? document.getElementById('size-select').value : 'M';
+                const color = document.getElementById('color-select') ? document.getElementById('color-select').value : 'White';
+                const message = `Hi, I'm interested in: ${product.name} (Size: ${size}, Color: ${color}) - $${product.price.toFixed(2)}`;
+                const phoneNumber = "13478493290";
+                const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+                window.open(url, '_blank');
+            };
+            buyNowContainer.appendChild(waBtn);
+
+            const note = document.createElement('p');
+            note.style.cssText = 'text-align: center; margin-top: 1rem; font-size: 0.9rem; color: #666;';
+            note.innerText = 'PayPal is for single item payments. WhatsApp is for multiple item payments.';
+            buyNowContainer.appendChild(note);
+
+            if (orDivider) orDivider.style.display = 'block';
         }
     } else {
         document.querySelector('.product-details-wrapper').innerHTML = '<h2>Product not found</h2><a href="index.html" class="cta-button">Back to Home</a>';
-    }
-}
-
-function renderPayPalButton() {
-    if (typeof paypal !== 'undefined' && document.getElementById('paypal-button-container')) {
-        document.getElementById('paypal-button-container').innerHTML = '';
-        paypal.Buttons({
-            createOrder: function(data, actions) {
-                const total = cart.reduce((sum, item) => sum + item.price, 0);
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            currency_code: 'USD',
-                            value: total.toFixed(2)
-                        }
-                    }]
-                });
-            },
-            onApprove: function(data, actions) {
-                return actions.order.capture().then(function(details) {
-                    // Save order details for receipt
-                    const orderData = {
-                        id: details.id,
-                        date: new Date().toLocaleString(),
-                        method: 'PayPal',
-                        total: parseFloat(details.purchase_units[0].amount.value),
-                        items: [...cart],
-                        customer: {
-                            name: details.payer.name.given_name + ' ' + details.payer.name.surname,
-                            email: details.payer.email_address
-                        }
-                    };
-                    localStorage.setItem('lastOrder', JSON.stringify(orderData));
-
-                    // Clear cart
-                    cart = [];
-                    localStorage.setItem('shoppingCart', JSON.stringify(cart));
-                    updateCartCount();
-                    
-                    // Redirect to receipt
-                    window.location.href = 'receipt.html';
-                });
-            },
-            onError: function(err) {
-                console.error('PayPal Error:', err);
-                alert('An error occurred with the payment. Please try again.');
-            }
-        }).render('#paypal-button-container');
     }
 }
 
@@ -633,7 +677,7 @@ function loadReceipt() {
     
     const itemsHtml = orderData.items.map(item => `
         <div class="receipt-row">
-            <span>${item.name} (${item.size || 'M'})</span>
+            <span>${item.name} (${item.size || 'M'}, ${item.color || 'White'})</span>
             <span>$${item.price.toFixed(2)}</span>
         </div>
     `).join('');
@@ -657,4 +701,37 @@ function loadReceipt() {
             ${orderData.customer.address ? `<p><strong>Shipping to:</strong><br>${orderData.customer.address}</p>` : ''}
         </div>
     `;
+}
+
+function handleWhatsAppCheckout() {
+    if (cart.length === 0) {
+        alert('Your cart is empty.');
+        return;
+    }
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const address = document.getElementById('address').value;
+
+    let message = "New Order Request:\n\n";
+    
+    cart.forEach(item => {
+        message += `${item.name} (${item.size || 'M'}, ${item.color || 'White'}) - $${item.price.toFixed(2)}\n`;
+    });
+
+    const total = cart.reduce((sum, item) => sum + item.price, 0);
+    message += `\nTotal: $${total.toFixed(2)}`;
+
+    if (name || email || address) {
+        message += `\n\nCustomer Details:\n`;
+        if (name) message += `Name: ${name}\n`;
+        if (email) message += `Email: ${email}\n`;
+        if (address) message += `Address: ${address}\n`;
+    }
+
+    // Replace with your WhatsApp number (international format without +)
+    const phoneNumber = "13478493290"; 
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    
+    window.open(url, '_blank');
 }
