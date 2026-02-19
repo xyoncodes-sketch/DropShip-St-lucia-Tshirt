@@ -1,3 +1,13 @@
+// EmailJS Configuration
+const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY'; // TODO: Paste your actual Public Key here
+const EMAILJS_SERVICE_ID = 'service_872sh8k';
+const EMAILJS_TEMPLATE_ID = 'template_izhj0te'; // Replace with your actual Template ID
+
+// Initialize EmailJS if the library is loaded
+if (typeof emailjs !== 'undefined') {
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+}
+
 // Mock Data for Dropshipping Products
 const products = [
     {
@@ -443,6 +453,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (whatsappBtn) {
         whatsappBtn.addEventListener('click', handleWhatsAppCheckout);
     }
+
+    // Handle Contact Form (EmailJS)
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', handleContactForm);
+    }
 });
 
 function updateCartCount() {
@@ -668,11 +684,7 @@ async function handleCheckoutForm(e) {
     };
 
     try {
-        // Replace with your Service ID and Template ID from EmailJS
-        const serviceID = 'YOUR_SERVICE_ID';
-        const templateID = 'YOUR_TEMPLATE_ID';
-
-        const response = await emailjs.sendForm(serviceID, templateID, form);
+        const response = await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form);
         
         if (response.status === 200) {
             localStorage.setItem('lastOrder', JSON.stringify(orderData));
@@ -689,6 +701,30 @@ async function handleCheckoutForm(e) {
         alert('There was a network error. Please try again.');
         submitBtn.disabled = false;
         submitBtn.innerText = 'Place Order';
+    }
+}
+
+// Handle Contact Form submission
+async function handleContactForm(e) {
+    e.preventDefault();
+    const form = e.target;
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerText;
+    
+    submitBtn.disabled = true;
+    submitBtn.innerText = 'Sending...';
+
+    try {
+        await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form);
+        
+        alert('Message sent successfully!');
+        form.reset();
+    } catch (error) {
+        console.error('EmailJS Error:', error);
+        alert('Failed to send message. Please try again.');
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerText = originalText;
     }
 }
 
